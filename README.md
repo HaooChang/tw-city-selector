@@ -15,5 +15,5 @@
 
 主要能夠限制城市 & 區域 
 
-用法 :  <div role="tw-city-selector" data-only-city="臺北市,基隆市" data-only-district="臺北市中山區,基隆市仁愛區"></div>
+用法 : <code-tag> <div role="tw-city-selector" data-only-city="臺北市,基隆市" data-only-district="臺北市中山區,基隆市仁愛區"></div> </code-tag>
 
