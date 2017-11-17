@@ -15,6 +15,9 @@
 
 主要能夠限制城市 & 區域 
 
-用法 : <code-tag content='<div role="tw-city-selector" data-only-city="臺北市,基隆市" data-only-district="臺北市中山區,基隆市仁愛區">'></div> </code-tag>
+用法 : 
+```html
+<div role="tw-city-selector" data-only-city="臺北市,基隆市" data-only-district="臺北市中山區,基隆市仁愛區"></div>
+```
 
 即使臺北市 & 基隆市 皆有中山區，但只會顯示data-only-district內的區域
