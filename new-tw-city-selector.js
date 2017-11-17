@@ -314,20 +314,25 @@
             return '<option value="" selected>---</option>';
         }
         var elOptions = '<option value="" selected>選擇區域</option>';
-        //example district = ['臺北市中山區','基隆市中山區'];
-        //新陣列 區域名
-        var district_search = district.map(function (value) {
-            //example 因剛好城市名都3個字，這邊直接取後面，district_search = ['中山區','中山區']
-            return value.slice(3);
-        })
-        for (var i = 0, j = data$1.districts[index][0].length - 1; i <= j; i++) {
-            var district_check = district_search.indexOf(data$1.districts[index][0][i]);
-            //主要多這行 判斷for循環中組成的 城市+區域名稱有沒有在district內
-            var county_check = district.indexOf(data$1.counties[index]+data$1.districts[index][0][i])
-            if ((district_search && Array.isArray(district_search) && district_check === -1) || county_check === -1) {
-                continue;
+        if(Array.isArray(district) && district.length > 0)
+        {
+            var district_search = district.map(function (value) {
+                return value.slice(3);
+            })
+            for (var i = 0, j = data$1.districts[index][0].length - 1; i <= j; i++) {
+                var district_check = district_search.indexOf(data$1.districts[index][0][i]);
+                var county_check = district.indexOf(data$1.counties[index]+data$1.districts[index][0][i])
+                if ((district_search && Array.isArray(district_search) && district_check === -1) || county_check === -1) {
+                    continue;
+                }
+                elOptions += '<option value="' + data$1.districts[index][0][i] + '"\n                            data-zipcode="' + data$1.districts[index][1][i] + '">\n\t\t                ' + data$1.districts[index][0][i] + '\n\t\t            </option>';
             }
-            elOptions += '<option value="' + data$1.districts[index][0][i] + '"\n                            data-zipcode="' + data$1.districts[index][1][i] + '">\n\t\t                ' + data$1.districts[index][0][i] + '\n\t\t            </option>';
+        }
+        else
+        {
+            for (var i = 0, j = data$1.districts[index][0].length - 1; i <= j; i++) {
+                elOptions += '<option value="' + data$1.districts[index][0][i] + '"\n                            data-zipcode="' + data$1.districts[index][1][i] + '">\n\t\t                ' + data$1.districts[index][0][i] + '\n\t\t            </option>';
+            }
         }
         return elOptions;
     }
